@@ -1,0 +1,19 @@
+<h1>Bikes</h1>
+
+
+<p *ngIf="!bikes"><em>Loading...</em></p>
+
+<table class='table' *ngIf="bikes">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bike of bikes">
+      <td>{{ bike.name }}</td>
+      <td>{{ bike.type }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BorrowBikeWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BorrowBikeWebApp.Controllers
@@ -24,6 +25,12 @@ namespace BorrowBikeWebApp.Controllers
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             });
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<Bike> Test()
+        {
+            return null;
         }
 
         public class WeatherForecast
