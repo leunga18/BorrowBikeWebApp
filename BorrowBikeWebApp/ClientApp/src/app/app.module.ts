@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { BikeListComponent } from './bike-list/bike-list.component'
 
 import { AboutComponent } from './about/about.component';
@@ -18,8 +16,6 @@ import { AboutComponent } from './about/about.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     BikeListComponent,
     AboutComponent
   ],
@@ -29,8 +25,6 @@ import { AboutComponent } from './about/about.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
       { path: 'bikes', component: BikeListComponent },
       { path: 'about', component: AboutComponent }
     ])

@@ -14,8 +14,11 @@ namespace BorrowBikeWebApp
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server =(localdb)\mssqllocaldb; Database = BorrowBikeDB; Trusted_Connection = True"
+                //@"Server =(localdb)\mssqllocaldb; Database = BorrowBikeDB; Trusted_Connection = True"
+                @"Server =theborrowbikedb.cakssctiyx9x.us-west-2.rds.amazonaws.com,1433; Database = BorrowBikeDB; User Id=leunga18; Password=theborrowbike"
                 );
+
+
             base.OnConfiguring(optionsBuilder);
         }
     }
