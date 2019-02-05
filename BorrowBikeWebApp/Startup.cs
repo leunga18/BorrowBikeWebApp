@@ -43,6 +43,7 @@ namespace BorrowBikeWebApp
             }
 
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
