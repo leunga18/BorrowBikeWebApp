@@ -10,6 +10,7 @@ namespace BorrowBikeWebApp
     public class BorrowBikeWebAppContext : DbContext
     {
         public DbSet<Bike> Bikes { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

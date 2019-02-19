@@ -3,14 +3,16 @@ using BorrowBikeWebApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BorrowBikeWebApp.Migrations
 {
     [DbContext(typeof(BorrowBikeWebAppContext))]
-    partial class BorrowBikeWebAppContextModelSnapshot : ModelSnapshot
+    [Migration("20190219205255_Admins")]
+    partial class Admins
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
