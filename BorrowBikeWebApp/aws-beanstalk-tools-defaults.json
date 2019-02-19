@@ -2,7 +2,7 @@
 {
     "comment" : "This file is used to help set default values when using the dotnet CLI extension Amazon.ElasticBeanstalk.Tools. For more information run \"dotnet eb --help\" from the project root.",
     "profile" : "leunga18",
-    "region"  : "us-east-1",
+    "region"  : "us-west-2",
     "application" : "BorrowBikeWebApp",
     "environment" : "BorrowBikeWebApp-prod",
     "cname"       : "borrowbikewebapp",
