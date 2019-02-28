@@ -15,8 +15,3 @@ export class BikeListComponent {
   }
 }
 
-interface Bike {
-  id: number;
-  name: string;
-  type: string;
-}

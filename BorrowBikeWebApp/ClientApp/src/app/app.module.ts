@@ -29,7 +29,7 @@ import { AboutComponent } from './about/about.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'bikes', component: BikeListComponent },
-      { path: 'admin', component: AdminPageComponent },
+      { path: 'admins', component: AdminPageComponent },
       { path: 'about', component: AboutComponent }
     ])
   ],
