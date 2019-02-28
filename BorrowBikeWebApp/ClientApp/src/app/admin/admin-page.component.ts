@@ -1,50 +1,62 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { BikeListComponent } from '../bike-list/bike-list.component';
 
 
 @Component({ templateUrl: 'admin-page.component.html' })
-export class AdminPageComponent implements OnInit {
+export class AdminPageComponent implements OnInit{
   loginForm: FormGroup;
   loading = false;
-  submitted = false;
   returnUrl: string;
+  admins: Admin[];
+  bikes: Bike[];
+  baseUrl: string;
+  loggedIn = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router) { }
+    private http: HttpClient) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    this.http.get<Admin[]>('api/Admins').subscribe(result => {
+      this.admins = result;
+    }, error => console.error(error));
+
+    this.http.get<Bike[]>('api/Bikes').subscribe(result => {
+      this.bikes = result;
+    }, error => console.error(error));
     
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
-
+  
   onSubmit() {
-    this.submitted = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.loading = true;
+    for (let admin of this.admins) {
+      if (admin.username == this.loginForm.controls.username.value && admin.password == this.loginForm.controls.password.value) {
+        this.loggedIn = true;
+      }
+    }
+    if (!this.loggedIn) {
+      window.alert("Incorrect Login. Please try again")
+    }
+   
   }
 
 
 }
 
 interface Admin {
-  Username: string;
-  Password: string;
+  username: string;
+  password: string;
 }
