@@ -4,3 +4,9 @@
     padding-top: 50px;
   }
 }
+@media (min-width: 767px) {
+  .body-content {
+    outline: 20px solid #171017;
+    padding:0;
+  }
+}
