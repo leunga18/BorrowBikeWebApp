@@ -14,6 +14,7 @@ export class AdminPageComponent implements OnInit{
   bikes: Bike[];
   baseUrl: string;
   loggedIn = false;
+  users: User[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,6 +32,10 @@ export class AdminPageComponent implements OnInit{
 
     this.http.get<Bike[]>('api/Bikes').subscribe(result => {
       this.bikes = result;
+    }, error => console.error(error));
+
+    this.http.get<User[]>('api/Users').subscribe(result => {
+      this.users = result;
     }, error => console.error(error));
     
   }
@@ -53,10 +58,23 @@ export class AdminPageComponent implements OnInit{
    
   }
 
+  findUser(userId): string {
+    for (let user of this.users) {
+      if (user.id == userId) {
+        return user.name;
+      }
+    }
+  }
+
 
 }
 
 interface Admin {
   username: string;
   password: string;
+}
+
+interface User {
+  Id: number;
+  Name: string;
 }

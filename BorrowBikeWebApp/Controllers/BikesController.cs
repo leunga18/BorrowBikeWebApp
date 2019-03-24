@@ -60,6 +60,7 @@ namespace BorrowBikeWebApp.Controllers
 
             var bikeDB = await _context.Bikes.FindAsync(id);
             bikeDB.UserId = bike.UserId;
+            bikeDB.User = await _context.Users.FindAsync(bike.UserId);
 
             _context.Entry(bikeDB).State = EntityState.Modified;
 

@@ -30,7 +30,7 @@
       <tr *ngFor="let bike of bikes">
         <td>{{ bike.name }}</td>
         <td>{{ bike.type }}</td>
-        <td>{{ bike.userId }}</td>
+        <td>{{ findUser(bike.userId) }}</td>
       </tr>
     </tbody>
   </table>
