@@ -50,6 +50,18 @@
   <ItemGroup>
     <Compile Remove="Migrations\20190119233440_test.cs" />
     <Compile Remove="Migrations\20190119233440_test.Designer.cs" />
+    <Compile Remove="Migrations\20190308233317_Users.cs" />
+    <Compile Remove="Migrations\20190308233317_Users.Designer.cs" />
+    <Compile Remove="Migrations\20190308235010_Users.cs" />
+    <Compile Remove="Migrations\20190308235010_Users.Designer.cs" />
+    <Compile Remove="Migrations\20190309000345_Users.cs" />
+    <Compile Remove="Migrations\20190309000345_Users.Designer.cs" />
+    <Compile Remove="Migrations\20190309000915_Users.cs" />
+    <Compile Remove="Migrations\20190309000915_Users.Designer.cs" />
+    <Compile Remove="Migrations\20190309001310_Users.cs" />
+    <Compile Remove="Migrations\20190309001310_Users.Designer.cs" />
+    <Compile Remove="Migrations\20190309001423_Users.cs" />
+    <Compile Remove="Migrations\20190309001423_Users.Designer.cs" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -12,56 +12,56 @@ namespace BorrowBikeWebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BikesController : ControllerBase
+    public class UsersController : ControllerBase
     {
-        
         private readonly BorrowBikeWebAppContext _context;
-        
-        public BikesController()
+
+        public UsersController()
         {
             _context = new BorrowBikeWebAppContext();
         }
 
-        // GET: api/Bikes
+        // GET: api/Users
         [HttpGet]
-        public IEnumerable<Bike> GetBikes()
+        public IEnumerable<User> GetUser()
         {
-            return _context.Bikes;
+            return _context.Users;
         }
 
-        
-        // GET: api/Bikes/5
+        // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBike([FromRoute] string id)
+        public async Task<IActionResult> GetUser([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var bike = await _context.Bikes.FindAsync(id);
+            var user = await _context.User.FindAsync(id);
 
-            if (bike == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(bike);
+            return Ok(user);
         }
 
-        // PUT: api/Bikes/5
+        // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBike([FromRoute] string id, [FromBody] Bike bike)
+        public async Task<IActionResult> PutUser([FromRoute] int id, [FromBody] User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var bikeDB = await _context.Bikes.FindAsync(id);
-            bikeDB.UserId = bike.UserId;
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
 
-            _context.Entry(bikeDB).State = EntityState.Modified;
+            _context.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -69,7 +69,7 @@ namespace BorrowBikeWebApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BikeExists(id))
+                if (!UserExists(id))
                 {
                     return NotFound();
                 }
@@ -82,46 +82,45 @@ namespace BorrowBikeWebApp.Controllers
             return NoContent();
         }
 
-        // POST: api/Bikes
+        // POST: api/Users
         [HttpPost]
-        public async Task<IActionResult> PostBike([FromBody] Bike bike)
+        public async Task<IActionResult> PostUser([FromBody] User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Bikes.Add(bike);
+            _context.User.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBike", new { id = bike.Id }, bike);
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // DELETE: api/Bikes/5
+        // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBike([FromRoute] string id)
+        public async Task<IActionResult> DeleteUser([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var bike = await _context.Bikes.FindAsync(id);
-            if (bike == null)
+            var user = await _context.User.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            _context.Bikes.Remove(bike);
+            _context.User.Remove(user);
             await _context.SaveChangesAsync();
 
-            return Ok(bike);
+            return Ok(user);
         }
 
-        private bool BikeExists(string id)
+        private bool UserExists(int id)
         {
-            return _context.Bikes.Any(e => e.Id == id);
+            return _context.User.Any(e => e.Id == id);
         }
-        
     }
 }
