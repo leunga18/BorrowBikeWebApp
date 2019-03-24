@@ -11,6 +11,7 @@ namespace BorrowBikeWebApp
     {
         public DbSet<Bike> Bikes { get; set; }
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,5 +23,7 @@ namespace BorrowBikeWebApp
 
             base.OnConfiguring(optionsBuilder);
         }
+
+        public DbSet<BorrowBikeWebApp.Models.User> User { get; set; }
     }
 }

@@ -8,12 +8,14 @@
     <tr>
       <th>Name</th>
       <th>Type</th>
+      <th>Status</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let bike of bikes">
       <td>{{ bike.name }}</td>
       <td>{{ bike.type }}</td>
+      <td>{{ bike.status }} </td>
     </tr>
   </tbody>
 </table>
