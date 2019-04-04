@@ -5,7 +5,9 @@ import { HttpClient } from '@angular/common/http';
 import { BikeListComponent } from '../bike-list/bike-list.component';
 
 
-@Component({ templateUrl: 'admin-page.component.html' })
+@Component({
+  templateUrl: 'admin-page.component.html',
+  styleUrls: ['./../app.component.css'] })
 export class AdminPageComponent implements OnInit{
   loginForm: FormGroup;
   loading = false;
@@ -60,8 +62,8 @@ export class AdminPageComponent implements OnInit{
 
   findUser(userId): string {
     for (let user of this.users) {
-      if (user.id == userId) {
-        return user.name;
+      if (user.Id == userId) {
+        return user.Name;
       }
     }
   }
@@ -75,6 +77,6 @@ interface Admin {
 }
 
 interface User {
-  id: number;
-  name: string;
+  Id: number;
+  Name: string;
 }

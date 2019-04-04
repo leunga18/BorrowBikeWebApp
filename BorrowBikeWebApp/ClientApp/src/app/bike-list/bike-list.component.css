@@ -1,0 +1,12 @@
+body {
+}
+
+.available {
+  background-color: #77cc77;
+  color: #053300;
+}
+
+.unavailable {
+  background-color: #ff6666;
+  color: #660000;
+}

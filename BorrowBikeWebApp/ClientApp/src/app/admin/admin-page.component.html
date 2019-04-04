@@ -1,39 +1,44 @@
-<div *ngIf="!loggedIn">
-  <h2>Admin Login</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" formControlName="username" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" formControlName="password" class="form-control" />
-    </div>
-    <div class="form-group">
-      <button [disabled]="loading" class="btn btn-primary">Login</button>
-    </div>
-  </form>
-</div>
 
-<div *ngIf="loggedIn">
-  <h1>Bikes</h1>
+<div class="home_background">
+  <div class="home_banner" style="padding: 30px">
+    <h1 class="em" style="font-size: 70px">Admin</h1>
+  </div>
 
-  <table class='table table-striped' *ngIf="bikes">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Status</th>
-        <th>User</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let bike of bikes">
-        <td>{{ bike.name }}</td>
-        <td>{{ bike.type }}</td>
-        <td>{{ bike.status }}</td>
-        <td>{{ findUser(bike.userId) }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div *ngIf="!loggedIn" class="card">
+    <h2>Admin Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" />
+      </div>
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Login</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="loggedIn" class="card">
+    <h1>Bikes</h1>
+    <table class='table table-striped' *ngIf="bikes">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>User</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bike of bikes">
+          <td>{{ bike.name }}</td>
+          <td>{{ bike.type }}</td>
+          <td>{{ bike.status }}</td>
+          <td>{{ findUser(bike.userId) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
