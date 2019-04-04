@@ -62,6 +62,14 @@ namespace BorrowBikeWebApp.Controllers
             bikeDB.UserId = bike.UserId;
             bikeDB.User = await _context.Users.FindAsync(bike.UserId);
 
+            if(bike.Status == "Available")
+            {
+                bikeDB.UserId = null;
+            }
+
+            bikeDB.Status = bike.Status;
+
+
             _context.Entry(bikeDB).State = EntityState.Modified;
 
             try
